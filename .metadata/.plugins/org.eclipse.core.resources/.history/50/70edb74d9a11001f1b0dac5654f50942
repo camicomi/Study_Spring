@@ -1,0 +1,16 @@
+package com.test.begin.di2;
+
+public class Service {
+	
+	public void work() {
+		
+		
+		// *** 의존 객체를 직접 생성한다.(X)
+		
+		Hong hong = new Hong();
+		hong.conding();
+		
+		
+	}
+
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+	
+		스프링 빈
+		- 스프링이라는 환경이 관리하는 객체
+		
+		스프링 빈 선언(정의)
+		- Hong hong = new Hong();
+	
+	 -->
+    <bean id="hong" class="com.test.begin.di3.Hong"></bean>
+    
+    <!--   <bean id="service" class="com.test.begin.di3.Service"></bean> -->
+    
+    <!--  setter  -->
+    <bean id="service" class="com.test.begin.di3.Service">
+    	<property name="hong"></property>
+    
+    </bean>
+    
+
+</beans>

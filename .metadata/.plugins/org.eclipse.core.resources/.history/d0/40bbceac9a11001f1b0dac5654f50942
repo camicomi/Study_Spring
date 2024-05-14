@@ -1,0 +1,20 @@
+package com.test.begin.di2;
+
+public class Service {
+	
+	// 멤버 변수
+	private Hong hong;
+	
+	
+	
+	public void work(Hong hong) {
+		
+		
+		// *** 의존 객체를 직접 생성한다.(X)
+		
+		hong.conding();
+		
+		
+	}
+
+}

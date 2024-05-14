@@ -1,0 +1,16 @@
+package com.test.begin.di3;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+public class DITest {
+
+	// Junit Test Case 
+	
+	
+	
+
+}
