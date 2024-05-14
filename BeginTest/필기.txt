@@ -223,7 +223,7 @@ Spring DI
 		
 *** 스프링 환경에서는 클래스의 객체(Bean, 빈)를 생성~관리~소멸까지를 
 		1. 개발자가 직접
-		2. 스프링이 조작 > 스프링 환경 설정 파일(XML, Java)
+		2. 스프링이 조작 > 스프링 환경 설정 파일(XML > Annotation > Java)
 		
 		pom.xml
 		<dependency> 1개당 > jar 파일 1개 추가 > pom.xml 에 코드 추가만 하면 알아서 다운로드
@@ -277,6 +277,8 @@ Spring AOP 용어
 	- Before Advice	
 	- After Advice
 	- Around Advice
+	
+	주업무에 의존적인 편
 	- After-returning Advice
 	- After-throwing Advice
 	
@@ -291,4 +293,6 @@ Spring AOP 용어
 	- Logger.java (C)		// 보조 업무 개체(클래스)
 	
 	- memo.xml			// 스프링 설정 파일
+
 	
+Spring Core > DI, AOP

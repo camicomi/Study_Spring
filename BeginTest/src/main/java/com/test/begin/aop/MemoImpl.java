@@ -20,6 +20,11 @@ public class MemoImpl {
 		
 	}
 	
+	
+	public void addSecret(String memo) {
+		System.out.println("비밀 메모를 작성합니다.");
+	}
+	
 	public String read(int seq) throws Exception {
 		
 		if (seq != 10) {
@@ -30,7 +35,7 @@ public class MemoImpl {
 //			Calendar now = Calendar.getInstance();
 //			System.out.printf("[LOG]%tF %tT > 메모 읽기가 발생했습니다.\n", now, now);
 			
-			return "메모입니다";
+			return "새로운 메모입니다";
 		} else {
 			
 			
