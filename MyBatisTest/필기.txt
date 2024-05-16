@@ -1,0 +1,148 @@
+스프링 + 웹 프로젝트 > Spring MVC Project
+
+Spring + DB 연동
+- Spring JDBC
+- MyBatis
+- JPA
+
+
+1. 새프로젝트
+- Project name : "MyBatisTest"
+- Templates : "Spring MVC Project"
+- Enter a topLevelPackage : "com.test.mybatis"
+
+2. 스프링/자바 버전 변경하기(프로젝트시 매번 설정)
+- pom.xml
+
+<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
+<java-version>11</java-version>
+      <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    
+- 패키지 탐색기 > 우클릭 > Properties > Project Facets > Java > 11
+
+3. 서블릿/JSP 버전 변경하기
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- JSP  -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.3</version>
+			<scope>provided</scope>
+		</dependency>
+		
+
+4. jUnit
+- pom.xml
+<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency> 
+		
+5. Lombok
+- pom.xml
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- DITest.java -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
+		
+Maven - Update Project (pom.xml 세팅 적용)
+
+
+
+6. MyBatis 의존성 추가
+<!-- MyBatis -->
+<dependency>
+	<groupId>org.mybatis</groupId>
+		<artifactId>mybatis</artifactId>
+		<version>3.5.2</version>
+</dependency>
+		
+<dependency>
+	<groupId>org.mybatis</groupId>
+		<artifactId>mybatis-spring</artifactId>
+		<version>1.3.2</version>
+</dependency>
+
+<dependency>
+	<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${org.springframework-version}</version>
+</dependency>
+		
+<dependency>
+	<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${org.springframework-version}</version>
+</dependency>
+
+
+ojdbc8.jar
+- 직접 참조
+
+
+
+- MyBatis > 라이브러리(O)
+- MyBatis > 설정(X)
+- JDBC > 라이브러리 + 설정(o)
+
+JDBC 연결 테스트
+- src/test/java > "com.test.mybatis.persistence" > "JDBCTest.java"
+
+
+- show user;
+
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+
+create user spring identified by java1234;
+grant connect, resource, dba to spring;
+
+create user springboot identified by java1234;
+grant connect, resource, dba to springboot;
+
+
+
+Connection Pool, 커넥션풀
+- Commons DBCP
+- HikariCP > 스프링부트 2.X 부터 기본 적용
+
+
+Commons DBCP
+- pom.xml > commons-dbcp 의존성 추가
+
+		<!--  Commons DBCP  -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+- root-context.xml > 설정 추가
+
+
+Commons DBCP > 단위 테스트
+- com.test.mybatis.persistence > "DBCPTest.java"

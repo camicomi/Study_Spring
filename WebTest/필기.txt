@@ -1,0 +1,146 @@
+
+스프링 + 웹 프로젝트 > Spring MVC Project
+
+1. 새 프로젝트
+- Project name : "WebTest"
+- Templates : Spring MVC Project
+- Enter a topLevelPackage: "com.test.web"
+
+2. 스프링/자바 버전 변경하기(프로젝트시 매번 설정)
+- pom.xml
+
+<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
+<java-version>11</java-version>
+      <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    
+- 패키지 탐색기 > 우클릭 > Properties > Project Facets > Java > 11
+
+3. 서블릿/JSP 버전 변경하기
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- JSP  -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.3</version>
+			<scope>provided</scope>
+		</dependency>
+		
+
+4. jUnit
+- pom.xml
+<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency> 
+		
+5. Lombok
+- pom.xml
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- DITest.java -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
+		
+Maven - Update Project (pom.xml 세팅 적용)
+		
+		
+
+새 패키지
+- "com.test.web.controller"
+
+- "com.test.web.controller" > "Ex01Controller.java"
+- XML을 사용한 환경설정 
+	- WEB-INF > spring > root-context.xml (스프링의 전반적인 설정)
+	- WEB-INF > spring > appServlet > servlet-context.xml (클라이언트의 요청/응답 관련 설정)
+	
+- Spring MVC 기본 구조
+- ModelAndView 사용
+
+
+- "com.test.web.controller" > "Ex02Controller.java"
+- views > "ex02.jsp"
+- ModelAndView 사용
+
+- "com.test.web.controller" > "Ex03Controller.java"
+- views > "ex03.jsp"
+- "com.test.web.dao" > "BoardDAO.java"
+
+- ModelAndView 사용
+- 의존 주입(XML 사용)
+
+
+- "com.test.web.controller" > "Ex04Controller.java"
+- views > "ex04.jsp"
+- 어노테이션을 사용한 컨트롤러 구현
+- 기본 구조
+
+
+
+- "com.test.web.controller" > "Ex05Controller.java"
+- views > "ex05.jsp"
+- views > "add.jsp"
+- views > "addok.jsp"
+- 어노테이션을 사용한 컨트롤러 구현
+- 주소 관리
+
+
+- "com.test.web.controller" > "Ex06Controller.java"
+- "com.test.web.dto" > "AddressDTO.java"
+- views > "ex06.jsp"
+- 요청 메서드의 파라미터 처리(***)
+- web.xml > 인코딩 필터 등록
+
+- com.test.web
+- com.test.web.controller
+- root 형제 패키지
+- "com.test.controller" > "Ex07Controller.java"
+- views > "ex07.jsp"
+- servlet-context.xml > <context:component-scan base-package="com.test.controller" />
+<context:component-scan base-package="com.test" />
+
+
+- "com.test.web.controller" > "Ex08Controller.java"
+- views > "ex08.jsp"
+- 요청 메서드의 반환값
+
+
+- "com.test.web.controller" > "Ex09Controller.java"
+- views > "ex09.jsp"
+
+- "com.test.web.exception" > "CommonExceptionAdvice.java"
+
+- 예외처리 > 주로 500번대 에러(서버측)
+
+
+
+- 인터페이스 역할
+- "com.test.web.connect"
+	- "Main.java" > 메인 클래스
+	- "Service.java" > 업무 클래스
+	- "Hong.java" > 기능 클래스
+	- "Lee.java" > 기능 클래스
+	- "Worker.java" (I)
