@@ -144,3 +144,12 @@ Maven - Update Project (pom.xml 세팅 적용)
 	- "Hong.java" > 기능 클래스
 	- "Lee.java" > 기능 클래스
 	- "Worker.java" (I)
+	
+	
+	
+- "com.test.web.controller" > "Ex10Controller.java"
+- "com.test.web.service" > "BoardService.java"
+						> "DataService.java"(I)
+						> "MemoService.java"
+- views > "ex10.jsp"
+- 의존 주입

@@ -9,9 +9,9 @@
 	
 	Commons DBCP 설정
 	
-	 -->
 	
 	
+
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 	
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
@@ -20,6 +20,50 @@
 		<property name="password" value="java1234"></property>
 		
 	</bean>
+	-->
+	
+	<!--  HikariCP  -->
+	
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	<!--   <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> -->
+		
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="username" value="spring"></property>
+		<property name="password" value="java1234"></property>
+	
+	</bean>
+	
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean>
+	
+
+	<!--  MyBatis -->
+	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!--  HikariCP 연결 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!--  setter -->
+		<!--  쿼리 넣는 xml 위치 설정 -->
+		<!--  classpath > resource 폴더  -->
+		<!-- src/main/resource > mapper > test.xml 파일 생성  -->
+		<property name="mapperLocations" value="classpath*:mapper/*.xml"></property>
+		<property name="configLocation" value="classpath:config/mybatis-config.xml"></property>
+	</bean>
+	
+	<!--  쿼리 실행 -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 </beans>

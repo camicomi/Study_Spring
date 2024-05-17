@@ -24,17 +24,19 @@ public class DBCPTest {
 	@Test
 	public void testConnection() {
 		
+		// not null 인지 확인
 		assertNotNull(dataSource);
 		
 		try {
 			
 			Connection conn = dataSource.getConnection();
 			
+			
 			System.out.println(conn.isClosed()); // false > 정상
 			
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 	}

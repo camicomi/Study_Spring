@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  src/main/resource > mapper > test.xml -->
+<!--  https://mybatis.org/mybatis-3/getting-started.html -->
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 는 통상적으로 xml 이름과 같이 작성한다.  -->
+<mapper namespace="test">
+
+	<!--  SQL 작성 -->
+	<!--   
+	<select id=""></select>
+	<insert id=""></insert>
+	<update id=""></update>
+	<delete id=""></delete>
+	-->
+	
+	<!--  ; 세미콜론 X  -->
+	<select id="time" resultType="String">
+		select sysdate from dual
+	</select>
+
+
+</mapper>

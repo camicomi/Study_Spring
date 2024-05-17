@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis">
+	
+	<insert id="m1">
+		insert into tblAddress values (seqAddress.nextVal, '홍길동', 20, '서울시', 'm')
+	</insert>
+	
+	<delete id="m2" parameterType="String">
+		delete from tblAddress where seq = #{seq}
+	</delete>
+	
+	<!--  
+		MyBatis Alias
+	-->
+	<insert id="m3" parameterType="map">
+		insert into tblAddress 
+			values (seqAddress.nextVal, #{name}, #{age}, #{address}, #{gender})
+	</insert>
+	
+	<insert id="add" parameterType="com.test.mybatis.dto.MyBatisDTO">
+		insert into tblAddress 
+			values (seqAddress.nextVal, #{name}, #{age}, #{address}, #{gender})
+	</insert>
+	
+	<select id="m4" resultType="Integer">
+		select count(*) from tblAddress
+	</select>
+	
+	<select id="m5" parameterType="String" resultType="com.test.mybatis.dto.MyBatisDTO">
+		select * from tblAddress where seq = #{seq}
+	</select>
+	
+	<!-- resultType: 결과셋의 타입(X), 결과셋의 레코드의 타입(O) -->
+	<select id="m6" resultType="String">
+		select name from tblAddress
+	</select>
+	
+	<select id="m7" resultType="com.test.mybatis.dto.MyBatisDTO">
+		select * from tblAddress
+	</select>
+	
+	<select id="m8" resultType="Integer" parameterType="String">
+		<!-- select count(*) from #{table} -->
+		select count(*) from ${table}
+		
+		<!-- where ${column} = #{value} -->
+		
+	</select>
+	
+	<select id="m9" resultType="com.test.mybatis.dto.MyBatisDTO">
+		
+		<!-- 
+		select * from tblAddress
+			where age &lt;= 25 
+			-->
+			
+		select * from tblAddress
+			<![CDATA[  
+			where age < 25
+			]]>
+			
+	</select>
+	
+	<select id="m10" parameterType="String" resultType="dto">
+	
+		select * from tblAddress 
+			where address like '%' || #{search} || '%'
+			<!-- where address like '%${search}%' -->	
+			
+			<!-- 
+			search > "서울"
+			where address like '%서울%'
+			
+			search > "%' or 1=1 or ''='%"
+			where address like '%%' or 1=1 or ''='%%' 
+			-->
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
