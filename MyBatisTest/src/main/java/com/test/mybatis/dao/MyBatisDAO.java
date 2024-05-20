@@ -29,4 +29,20 @@ public interface MyBatisDAO {
 
 	List<MyBatisDTO> m10(String search);
 
+	List<MyBatisDTO> m11(String gender);
+
+	List<MyBatisDTO> m12(String gender);
+
+	List<MyBatisDTO> m13(MyBatisDTO dto);
+
+	List<MyBatisDTO> m14(Integer type);
+
+	List<MyBatisDTO> m15(Map<String, String> map);
+
+	List<MyBatisDTO> m16(MyBatisDTO dto);
+
+	void m17(MyBatisDTO dto);
+
+	List<MyBatisDTO> m18(List<String> name);
+
 }

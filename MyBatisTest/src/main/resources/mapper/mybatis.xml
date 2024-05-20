@@ -3,82 +3,305 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis">
-	
+
 	<insert id="m1">
-		insert into tblAddress values (seqAddress.nextVal, '홍길동', 20, '서울시', 'm')
+		insert into tblAddress values (seqAddress.nextVal,
+		'홍길동', 20, '서울시', 'm')
 	</insert>
-	
+
 	<delete id="m2" parameterType="String">
-		delete from tblAddress where seq = #{seq}
+		delete from tblAddress where seq =
+		#{seq}
 	</delete>
-	
-	<!--  
-		MyBatis Alias
-	-->
+
+	<!-- MyBatis Alias -->
 	<insert id="m3" parameterType="map">
-		insert into tblAddress 
-			values (seqAddress.nextVal, #{name}, #{age}, #{address}, #{gender})
+		insert into tblAddress
+		values (seqAddress.nextVal, #{name}, #{age}, #{address}, #{gender})
 	</insert>
-	
+
 	<insert id="add" parameterType="com.test.mybatis.dto.MyBatisDTO">
-		insert into tblAddress 
-			values (seqAddress.nextVal, #{name}, #{age}, #{address}, #{gender})
+		insert into tblAddress
+		values (seqAddress.nextVal, #{name}, #{age}, #{address}, #{gender})
 	</insert>
-	
+
 	<select id="m4" resultType="Integer">
 		select count(*) from tblAddress
 	</select>
-	
-	<select id="m5" parameterType="String" resultType="com.test.mybatis.dto.MyBatisDTO">
+
+	<select id="m5" parameterType="String"
+		resultType="com.test.mybatis.dto.MyBatisDTO">
 		select * from tblAddress where seq = #{seq}
 	</select>
-	
+
 	<!-- resultType: 결과셋의 타입(X), 결과셋의 레코드의 타입(O) -->
 	<select id="m6" resultType="String">
 		select name from tblAddress
 	</select>
-	
-	<select id="m7" resultType="com.test.mybatis.dto.MyBatisDTO">
+
+	<select id="m7" resultType="dto">
 		select * from tblAddress
 	</select>
-	
+
 	<select id="m8" resultType="Integer" parameterType="String">
 		<!-- select count(*) from #{table} -->
 		select count(*) from ${table}
-		
+
 		<!-- where ${column} = #{value} -->
-		
+
 	</select>
-	
+
 	<select id="m9" resultType="com.test.mybatis.dto.MyBatisDTO">
-		
-		<!-- 
-		select * from tblAddress
-			where age &lt;= 25 
-			-->
-			
+
+		<!-- select * from tblAddress where age &lt;= 25 -->
+
 		select * from tblAddress
 			<![CDATA[  
 			where age < 25
 			]]>
-			
+
 	</select>
-	
+
 	<select id="m10" parameterType="String" resultType="dto">
+
+		select * from tblAddress
+		where address like '%' || #{search} || '%'
+		<!-- where address like '%${search}%' -->
+
+		<!-- search > "서울" where address like '%서울%' search > "%' or 1=1 or ''='%" 
+			where address like '%%' or 1=1 or ''='%%' -->
+	</select>
+
+	<select id="m11" resultType="dto" parameterType="String">
+		<!-- select * from tblAddress where gender = #{gender} order by seq asc -->
+
+
+		<!-- parameterType 매개변수가 String 일때, char로 인식하여 에러 나므로, toString , 또는 쌍따옴표, 
+			홑따옴표 위치 변경 -->
+		<if test="gender == 'm'.toString()">
+
+			select
+			*
+			from tblAddress
+			where gender = 'm'
+			order by seq asc
+
+		</if>
+
+		<if test='gender == "f"'>
+			select
+			*
+			from tblAddress
+			where gender = 'f'
+			order by seq asc
+		</if>
+
+		<if test='gender == null'>
+			select
+			*
+			from tblAddress
+			order by seq asc
+		</if>
+
+	</select>
+
+
+	<select id="m12" resultType="dto" parameterType="String">
+
+		<!--  
+		select
+		*
+		from tblAddress
+			<if test="gender != null">
+			where gender = #{gender}
+			</if>
+				order by seq asc
+		 -->
+
+		select
+		*
+		from tblAddress
+			where age >= 3
+			<if test="gender != null">
+			and gender = #{gender}
+			</if>
+				order by seq asc	
+	</select>	 
+
+	<select id="m13" resultType="dto" parameterType="dto">
 	
-		select * from tblAddress 
-			where address like '%' || #{search} || '%'
-			<!-- where address like '%${search}%' -->	
+	<!--   
+		<if test="gender == null and address == null">
+		select * from tblAddress
+		</if>
+		
+		<if test="gender != null and address == null">
+		select * from tblAddress
+			where gender = #{gender}
+		</if>
+		
+		<if test="gender == null and address != null">
+		select * from tblAddress
+			where address like '%' || #{address} || '%'	
+		</if>
+		
+		<if test="gender != null and address != null">
+		select * from tblAddress
+			where gender = #{gender} and address like '%' || #{address} || '%'	
+		</if>
+	-->
+	
+	<!--   
+		select * from tblAddress
+			where 
+				<if test="gender != null">
+				gender = #{gender} 
+				</if>
 			
-			<!-- 
-			search > "서울"
-			where address like '%서울%'
+				<if test="address != null">
+				and address like '%' || #{address} || '%'
+				</if>
+	-->
+	
+		select * from tblAddress
+			where 
+				1 = 1 <!--  무조건 true 인 조건  -->
+				<if test="gender != null">
+				and gender = #{gender} 
+				</if>
 			
-			search > "%' or 1=1 or ''='%"
-			where address like '%%' or 1=1 or ''='%%' 
-			-->
+				<if test="address != null">
+				and address like '%' || #{address} || '%'
+				</if>
+						
+		
 	</select>
 	
+	<select id="m14" resultType="dto" parameterType="Integer">
+	
+		select
+		<if test="type == 1">
+			name, age
+		</if>
+		<if test="type == 2">
+			name, gender, address		
+		</if>
+		<if test="type == null">
+			*		
+		</if>
+		 from tblAddress
+	
+	
+	</select>
+	
+	<select id="m15" resultType="dto" parameterType="map">
+		
+		<!-- 
+		select * from tblAddress
+			where ${column} = #{word} 
+		-->
+		
+		<!--  m15.do?column=seq&word=1 
+		m15.do?column=name&word=고양이
+		m15.do?column=gender&word=f
+		m15.do?column=age&word=3
+		m15.do?column=address&word=강남구
+		
+		 -->
+		 
+		<!--   
+		select * from tblAddress
+			<choose>
+				<when test="column == 'age'">
+					where age >= #{word}
+				</when>
+				<when test="column == 'address'">
+					where address like '%' || #{word} || '%'
+				</when>
+				
+				<otherwise>
+					where ${column} = #{word}
+				</otherwise>				
+				 
+			</choose>
+			
+			-->
+			
+			select * from tblAddress
+			<where>
+			<if test="column == 'age'">
+			age >= #{word}
+			</if>
+			<if test="column == 'address'">
+			address like '%' || #{word} || '%'
+			</if>
+			<if test="column != null and column != 'age' and column != 'address'">
+			${column} = #{word}
+			</if>
+			</where>
+
+	
+	</select>
+	
+	<select id="m16" resultType="dto" parameterType="dto">
+	
+			select * from tblAddress
+				<where>
+					<if test="age != null">
+						and age >= #{age}
+					</if>
+					<if test="gender != null">
+						and gender = #{gender}
+					</if>
+				</where>
+	</select>
+	
+	<select id="m17" resultType="dto">
+	
+		update tblAddress
+			<set>
+			<if test="name != null">name = #{name},</if>
+			<if test="age != null">age = #{age},</if>
+			<if test="address != null">address = #{address},</if>
+			<if test="gender != null">gender = #{gender}</if>
+			</set>
+				where seq = #{seq}
+	</select>
+	
+	<select id="m18" resultType="dto" parameterType="list">
+		<!--  [강아지, 고양이, 타조]  -->
+	
+		<!-- 
+		select * from tblAddress
+			where name = '강아지' or name = '고양이' or name = '타조'	
+		-->
+		  
+		<!--  
+		select * from tblAddress
+			where name in('강아지', '고양이', '타조')
+		-->
+		
+		<!-- 
+		select * from tblAddress
+			<where>
+				<foreach collection="name" item="item" index="index">
+					#{item}
+				</foreach>
+			</where>
+		-->
+		
+		<!--  https://mybatis.org/mybatis-3/dynamic-sql.html  -->
+		<!--  select * from tblAddress WHERE name in( '강아지' , '고양이' , '타조' )   -->
+		select * from tblAddress
+		<where>
+			<foreach collection="list" item="item" open="name in(" close=")" separator=",">
+					#{item}
+			</foreach>
+		</where>		
+			
+	</select>
+	
+
 </mapper>
 
 

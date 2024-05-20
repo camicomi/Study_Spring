@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- src/main/resource > mapper > test.xml -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="code">
+	
+	<select id="time" resultType="String">
+		select sysdate from dual
+	</select>
+	
+	<!--  글쓰기  -->
+	<insert id="add" parameterType="dto">
+	
+		insert into tblCode (seq, subject, code, regdate, language)
+			values (seqCode.nextVal, #{subject}, #{code}, default, #{language})
+		
+	</insert>
+	
+	<!--  목록 보기  -->
+	<select id="list" resultType="dto">
+		select
+			seq, language, subject, regdate
+		from tblCode
+			order by seq desc
+	</select>
+	
+	<!--  상세 보기 -->
+	<select id="get" resultType="dto" parameterType="String">
+		select * from tblCode where seq = #{seq}	
+	</select>
+
+		
+</mapper>

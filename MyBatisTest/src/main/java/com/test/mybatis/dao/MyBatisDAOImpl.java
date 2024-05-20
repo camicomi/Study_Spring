@@ -143,6 +143,64 @@ public class MyBatisDAOImpl implements MyBatisDAO {
 		return template.selectList("mybatis.m10", search);
 	}
 	
+	@Override
+	public List<MyBatisDTO> m11(String gender) {
+		
+		
+		return template.selectList("mybatis.m11", gender);
+	}
+	
+	@Override
+	public List<MyBatisDTO> m12(String gender) {
+
+		
+		return template.selectList("mybatis.m12", gender);
+	}
+	
+	@Override
+	public List<MyBatisDTO> m13(MyBatisDTO dto) {
+	
+		
+		return template.selectList("mybatis.m13", dto);
+	}
+	
+	@Override
+	public List<MyBatisDTO> m14(Integer type) {
+	
+		
+		return template.selectList("mybatis.m14", type);
+	}
+	
+	
+	@Override
+	public List<MyBatisDTO> m15(Map<String, String> map) {
+		
+		
+		return template.selectList("mybatis.m15", map);
+		
+	}
+	
+	@Override
+	public List<MyBatisDTO> m16(MyBatisDTO dto) {
+	
+		
+		return template.selectList("mybatis.m16", dto);
+	}
+	
+	@Override
+	public void m17(MyBatisDTO dto) {
+		
+		template.update("mybatis.m17", dto);
+		
+	}
+	
+	@Override
+	public List<MyBatisDTO> m18(List<String> name) {
+			
+		return template.selectList("mybatis.m18", name);
+
+	}
+	
 }
 
 
