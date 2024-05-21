@@ -1,7 +1,0 @@
-package com.test.begin.aop;
-
-
-// 보조 업무 객체
-public class Logger {
-
-}

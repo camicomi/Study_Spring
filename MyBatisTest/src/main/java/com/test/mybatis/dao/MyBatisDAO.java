@@ -3,7 +3,10 @@ package com.test.mybatis.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.test.mybatis.dto.AddressDTO;
+import com.test.mybatis.dto.DetailDTO;
 import com.test.mybatis.dto.MyBatisDTO;
+import com.test.mybatis.dto.UserDTO;
 
 public interface MyBatisDAO {
 
@@ -44,5 +47,17 @@ public interface MyBatisDAO {
 	void m17(MyBatisDTO dto);
 
 	List<MyBatisDTO> m18(List<String> name);
+
+	void addUser(UserDTO udto);
+
+	void addDetail(DetailDTO ddto);
+
+	String getSeq();
+
+	List<AddressDTO> m20();
+
+	List<AddressDTO> m21();
+
+	List<AddressDTO> m22();
 
 }

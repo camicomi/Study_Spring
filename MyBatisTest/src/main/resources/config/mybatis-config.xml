@@ -7,6 +7,12 @@
 	<!-- 타입 별칭 -->
 	<typeAliases>
 		<typeAlias type="com.test.mybatis.dto.MyBatisDTO" alias="dto" />
+		<typeAlias type="com.test.mybatis.dto.UserDTO" alias="udto" />
+		<typeAlias type="com.test.mybatis.dto.DetailDTO" alias="ddto" />
+	
+		<typeAlias type="com.test.mybatis.dto.AddressDTO" alias="adto" />
+		<typeAlias type="com.test.mybatis.dto.InfoDTO" alias="idto" />
+		<typeAlias type="com.test.mybatis.dto.MemoDTO" alias="mdto" />
 	</typeAliases>
 	
 </configuration>

@@ -1,0 +1,56 @@
+Spring File Upload
+
+- cos.jar > Servlet 사용 > 개발 종료
+
+- commons-fileupload (외부 라이브러리)
+- Servlet 내장
+
+1. 새 프로젝트
+- Project name: "FileTest"
+- Templates : Spring MVC Project
+- Enter a topLevelPackage : "com.test.file"
+
+2. 스프링/자바 버전 변경하기(프로젝트시 매번 설정)
+- pom.xml
+
+<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
+<java-version>11</java-version>
+      <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    
+- 패키지 탐색기 > 우클릭 > Properties > Project Facets > Java > 11
+
+3. 서블릿/JSP 버전 변경하기
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- JSP  -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.3</version>
+			<scope>provided</scope>
+		</dependency>
+		
+4. web.xml
+- 파일 업로드 설정
+
+5. servlet-context.xml 
+- 파일 업로드 설정
+
+6. 업로드 위치
+- webapp > resources > "files"
+
+7. 파일 생성
+- "com.test.file.controller" > "FileController.java"
+- views > "add.jsp"
+		> "addok.jsp"
+
