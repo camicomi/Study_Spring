@@ -185,6 +185,9 @@ public class FileController {
 		
 		String path = servletContext.getRealPath("/resources/files");
 		
+		System.out.println(path);
+		System.out.println(txt);
+		
 		for (MultipartFile file : attach) {
 			
 			

@@ -1,0 +1,91 @@
+
+Spring AOP
+- Spring MVC Project
+- Annotation 방식
+
+
+1. 새프로젝트
+- Project name : "AOPTest"
+- Templates : Spring MVC Project
+- Enter a topLevelPackage : "com.test.aop"
+
+2. 스프링/자바 버전 변경하기(프로젝트시 매번 설정)
+- pom.xml
+
+<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
+<java-version>11</java-version>
+      <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    
+- 패키지 탐색기 > 우클릭 > Properties > Project Facets > Java > 11
+
+
+3. 서블릿/JSP 버전 변경하기
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- JSP  -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.3</version>
+			<scope>provided</scope>
+		</dependency>
+		
+
+4. AOP 의존성 추가
+- 2개
+
+		<!--  AOP -->
+		
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>	
+		
+
+5. servlet-context.xml 
+- AOP를 어노테이션 방식으로 설정할 수 있게 
+
+
+6. 파일 생성
+- "com.test.aop.controller" > "AOPController.java"
+- "com.test.aop.dao"		> "AOPDAO.java" (I)
+							> "AOPDAOImpl.java"(C)
+- "com.test.aop.dto"		> "AOPDTO.java"
+
+- views > "list.jsp"
+		> "add.jsp"
+		> "view.jsp"
+
+- "com.test.aop.aspect" > "Logger.java"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
