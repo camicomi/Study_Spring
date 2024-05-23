@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  인터페이스  -->
+<mapper namespace="com.test.mybatis.mapper.AddressMapper">
+
+
+	<!--   인터페이스의 추상 메서드의 이름이 ID가 되어 연결고리가 되어 쿼리를 찾아준다 -->
+	<select id="list" resultType="com.test.mybatis.dto.AddressDTO">
+		select * from tblAddress
+	</select>
+	
+</mapper>

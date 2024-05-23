@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+	<!-- Appenders -->
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%-5p: %c - %m%n" />
+		</Console>
+	</Appenders>
+
+	<!-- Loggers -->
+	<Loggers>
+		<!-- Application Loggers -->
+
+		<Logger name="com.test" level="trace" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+
+
+		<!-- 3rdparty Loggers -->
+		<Logger name="org.springframework.core" level="warn"
+			additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		<Logger name="org.springframework.beans" level="warn"
+			additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		<Logger name="org.springframework.context" level="warn"
+			additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		<Logger name="org.springframework.web" level="debug"
+			additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+
+		<!-- Root Logger -->
+		<Root level="info">
+			<AppenderRef ref="Console" />
+		</Root>
+
+		<!-- log4j2 -->
+        <Logger name="log4jdbc.log4j2" level="info" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+
+		<!-- Additional Loggers -->
+		
+		<!-- QUERY LOG -->
+		<Logger name="jdbc.sqlonly" level="info" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		
+		<!-- RESULTSET TABLE -->
+		<Logger name="jdbc.resultsettable" level="info" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		
+		<!-- query + time -->
+		<Logger name="jdbc.sqltiming" level="off" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		
+		<!-- 전체 로그 ( 양 상당히 많아짐 ) -->
+		<Logger name="jdbc.audit" level="off" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		
+		<!-- resultsettable + resultset (parameter) -->
+		<Logger name="jdbc.resultset" level="off" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		
+		<!-- connection log -->
+		<Logger name="jdbc.connection" level="off" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		
+	</Loggers>
+
+</Configuration>

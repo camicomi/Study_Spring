@@ -1,0 +1,37 @@
+
+POST http://localhost:8080/rest/address
+Content-Type: application/json
+
+{
+    "name": "호호호",
+    "age": 20,
+    "address": "서울시 강남구",
+    "gender": "m"
+}
+
+
+###
+
+
+GET http://localhost:8080/rest/address HTTP/1.1
+
+
+###
+
+PUT http://localhost:8080/rest/address/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "강아지",
+    "age": 7,
+    "address": "서울시 강동구",
+    "gender": "m"
+}
+
+###
+
+DELETE http://localhost:8080/rest/address/23 HTTP/1.1
+
+###
+
+GET http://localhost:8080/rest/address/1 HTTP/1.1

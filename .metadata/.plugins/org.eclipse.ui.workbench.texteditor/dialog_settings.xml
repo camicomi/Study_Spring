@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="AOP"/>
+		<item key="selection" value="mvn"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="mvn"/>
+			<item value="HikariCP"/>
+			<item value="logging"/>
+			<item value="mybatis"/>
+			<item value="스프링에 적용"/>
+			<item value="소켓 종료"/>
+			<item value="소켓"/>
+			<item value="jquery"/>
+			<item value="메시지를 수신"/>
+			<item value="전달 메시지"/>
+			<item value="중복창 방지"/>
+			<item value="const"/>
+			<item value="강아지"/>
+			<item value="child"/>
 			<item value="aop"/>
-			<item value="display"/>
-			<item value="dispaly"/>
-			<item value="servlet"/>
-			<item value="spy"/>
-			<item value="Logging"/>
-			<item value="log4j"/>
-			<item value="list"/>
-			<item value="ali"/>
-			<item value="m7"/>
-			<item value="Hikari"/>
-			<item value="MyBatis"/>
-			<item value="LOG4J"/>
-			<item value="mapping"/>
-			<item value="more"/>
 		</list>
 		<list key="replacehistory">
 		</list>
@@ -39,6 +39,13 @@
 		<item key="DIALOG_Y_ORIGIN" value="238"/>
 		<item key="DIALOG_WIDTH" value="610"/>
 		<item key="DIALOG_HEIGHT" value="426"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+	<section name="org.eclipse.wst.html.ui.internal.preferences.ui.HTMLTemplatePreferencePage$HTMLEditTemplateDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="231"/>
+		<item key="DIALOG_Y_ORIGIN" value="8"/>
+		<item key="DIALOG_WIDTH" value="610"/>
+		<item key="DIALOG_HEIGHT" value="404"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 </section>
