@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- security-context.xml -->
+	
+	<!-- 403 처리 핸들러 -->
+	<bean id="customAccessDenied" class="com.test.java.auth.CustomAccessDeniedHandler"></bean>
+	
+	<!-- 로그인 성공 처리 핸들러 -->
+	<bean id="customLoginSuccess" class="com.test.java.auth.CustomLoginSuccessHandler"></bean>
+	
+	<!-- PasswordEncoder : blowfish -->
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+	
+	<!-- 유저 정보 객체 -->
+	<bean id="customUserDetailsService" class="com.test.java.auth.CustomUserDetailsService"></bean>
+	
+	
+	<!-- 20. 허가 관련 설정 -->
+	<security:http>
+	
+		<!-- URI 허가 -->
+		<!--   
+		<security:intercept-url pattern="/board/add.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/board/edit.do" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/board/del.do" access="hasRole('ROLE_MEMBER')" />
+		-->
+		
+		<!-- 23. 403 처리 -->
+		<security:access-denied-handler ref="customAccessDenied" />
+		
+		<!-- 폼인증 -->
+		<!-- 24. 커스텀 성공 핸들러 -->
+		<security:form-login login-page="/member/login.do" authentication-success-handler-ref="customLoginSuccess" />
+		
+		<!-- 26. 로그아웃 -->
+		<security:logout logout-url="/member/logout.do" invalidate-session="true" logout-success-url="/index.do" />
+				
+	</security:http>
+	
+		
+	<!-- 21. 인증 관련 설정 -->
+	<security:authentication-manager>
+	
+		<security:authentication-provider user-service-ref="customUserDetailsService">
+			<security:password-encoder ref="bcryptPasswordEncoder" />
+		</security:authentication-provider>
+		
+	</security:authentication-manager>
+
+</beans>
+
+
+
+
+
+
+
+
+
+

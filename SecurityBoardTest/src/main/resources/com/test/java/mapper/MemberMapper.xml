@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.java.mapper.MemberMapper">
+	
+	<resultMap type="com.test.java.dto.AuthDTO" id="authMap">
+		<result column="auth" property="auth" />
+	</resultMap>
+	
+	<resultMap type="com.test.java.dto.MemberDTO" id="memberMap">
+		<id column="memberid" property="memberid" />
+		<result column="memberpw" property="memberpw" />
+		<result column="membername" property="membername" />
+		<result column="enabled" property="enabled" />
+		<result column="email" property="email" />
+		<result column="gender" property="gender" />
+		<result column="regdate" property="regdate" />
+		<collection property="authlist" resultMap="authMap"></collection>
+	</resultMap>
+	
+	<select id="read" resultMap="memberMap">
+		select
+			m.memberid,
+			m.memberpw,
+			m.membername,
+			m.enabled,
+			m.email,
+			m.gender,
+			m.regdate,
+			a.auth
+		from member m
+			left outer join member_auth a
+				on m.memberid = a.memberid
+					where m.memberid = #{memberid}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

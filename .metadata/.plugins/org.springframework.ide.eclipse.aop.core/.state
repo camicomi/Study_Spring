@@ -7,6 +7,7 @@
 <aop-project name="TilesTest"/>
 <aop-project name="WebSocketTest"/>
 <aop-project name="MyBatisTest"/>
+<aop-project name="SecurityTest"/>
 <aop-project name="WebTest"/>
 <aop-project name="RESTfulTest"/>
 <aop-project name="BeginTest">
@@ -14,6 +15,7 @@
 <aop-reference advice-type="AFTER_THROWING" bean="1:BeansModel|2:BeginTest|3:src/main/java/com/test/begin/aop/memo.xml|7:beans:7|8:memo:14" bean-file="/BeginTest/src/main/java/com/test/begin/aop/memo.xml" bean-start-line="14" factory-id="org.springframework.ide.eclipse.aop.core.aopReferenceElementFactory" file="/BeginTest/src/main/java/com/test/begin/aop/memo.xml" source="=BeginTest/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.test.begin.aop{Logger.java[Logger~check~QException;" source-start-line="75" target="=BeginTest/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.test.begin.aop{MemoImpl.java[MemoImpl~read~I" target-start-line="28"/>
 </aspect-definition>
 </aop-project>
+<aop-project name="SecurityBoardTest"/>
 <aop-project name="AOPTest"/>
 <aop-project name="FileTest"/>
 </aop-reference-model>
