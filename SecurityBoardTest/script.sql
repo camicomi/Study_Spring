@@ -12,6 +12,8 @@ create sequence seqBoard;
 insert into Board 
     values(seqBoard.nextVal, '게시판입니다.', '내용', 'dog', default);
 
+
+
 commit;
 
 

@@ -7,6 +7,8 @@ create table users (
 	enabled char(1) default '1'
 );
 
+select * from users;
+
 create table authorities (
 	username varchar2(50) not null,
 	authority varchar2(50) not null,
